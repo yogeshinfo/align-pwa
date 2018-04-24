@@ -1,0 +1,28 @@
+import Vue from 'vue'
+import Router from 'vue-router'
+import Home from '@/components/Home'
+import Tips from '@/components/Tips'
+import Categories from '@/components/Categories'
+
+Vue.use(Router)
+
+export default new Router({
+  mode: 'history',
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: Home
+    },
+    {
+      path: '/category/:id',
+      name: 'Categories',
+      component: Categories
+    },
+    {
+      path: '/tips/:id',
+      name: 'Tips',
+      component: Tips
+    }
+  ]
+})
