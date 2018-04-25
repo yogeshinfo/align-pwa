@@ -3,8 +3,7 @@
       <div class="text-left tip-col" v-for="hc in content">
           <div class="title top-head">
           <h1>{{ hc.title}}</h1>
-          <h2>We have used this model for</h2>
-          <span class="tip-count"></span>
+          <h2>We have used this model for</h2>          
           </div>
           <div class="col-sm-12" >
             <div class="description" v-html="hc.description">
@@ -20,7 +19,8 @@ export default {
   name: 'home',
   data () {
     return {
-      content: ''
+      content: '',
+      offsetHeight: ''
     }
   },
   mounted: function () {
