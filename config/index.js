@@ -16,6 +16,7 @@ module.exports = {
     // Before setting to `true`, make sure to:
     // npm install --save-dev compression-webpack-plugin
     productionGzip: false,
+    useEslint: false,    
     productionGzipExtensions: ['js', 'css'],
     // Run the build command with an extra argument to
     // View the bundle analyzer report after build finishes:
@@ -26,6 +27,7 @@ module.exports = {
   dev: {
     env: require('./dev.env'),
     port: 8080,
+    useEslint: false,	
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',

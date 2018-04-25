@@ -1,8 +1,8 @@
 // Import and configure the Firebase SDK
 // These scripts are made available when the app is served or deployed on Firebase Hosting
 // If you do not serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup
-importScripts('../firebase-app.js');
-importScripts('../firebase-messaging.js');
+importScripts('firebase-app.js');
+importScripts('firebase-messaging.js');
 
 if (typeof firebase === 'undefined') throw new Error('hosting/init-error: Firebase SDK not detected. You must include it before /__/firebase/init.js');
 firebase.initializeApp({

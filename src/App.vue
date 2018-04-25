@@ -1,3 +1,4 @@
+/* eslint no-use-before-define: 0 */
 <template>
   <div>
     <div v-if="this.$route.path == '/'">
@@ -12,7 +13,7 @@
               <v-ons-list-item @click="goToHome" style="background:#969696" tappable modifier="chevron">
                 <div class="center" style="color:#fff">Home</div>
               </v-ons-list-item>
-              <v-ons-list-item v-for="(cat,index) in Category" tappable modifier="chevron" :key="index" @click="changePage(cat)" :style="'background:'+cat.color">
+              <v-ons-list-item v-for="(cat,index) in Category" tappable modifier="chevron" :key="index" @click="changePage(cat)" :style="'background:'+cat.color" :tap-background-color="'background:'+cat.color">
                 <div class="center" style="color: #fff">{{ cat.title }}</div>
               </v-ons-list-item>
             </v-ons-list>
@@ -42,7 +43,6 @@ window.firebase.initializeApp({
 })
 
 const messaging = window.firebase.messaging()
-
 const customToolbar = {
   template: '#toolbar',
   props: ['title', 'action']
@@ -79,7 +79,7 @@ export default {
       var self = this
       messaging.requestPermission().then(function () {
         if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('/firebase-messaging-sw.js').then(function (registration) {
+          navigator.serviceWorker.register('/static/firebase-messaging-sw.js').then(function (registration) {
             messaging.useServiceWorker(registration)
             // Request permission and get token.....
             console.log('Service worker registered')
@@ -93,11 +93,11 @@ export default {
               console.log('Message received. ', payload)
             })
             console.log('Current Token : ' + currentToken)
-            self.saveTokenToDB(currentToken)
+            console.log(localStorage.getItem('token'))
+            /* eslint-disable no-eqeqeq */
             if (currentToken !== localStorage.getItem('token')) {
               // save to DB
               self.saveTokenToDB(currentToken)
-              localStorage.setItem('token', currentToken)
             }
           } else {
             console.log('No Instance ID token available. Request permission to generate one.')
@@ -136,8 +136,9 @@ export default {
           token: token
         }
       }).then(result => {
-        console.log('Result' + result.data)
-        localStorage.setItem('token', token)
+        if (result.data.status === 'success') {
+          localStorage.setItem('token', token)
+        }
       }, error => {
         console.log(error)
       }
@@ -175,6 +176,34 @@ body ons-splitter{
   padding: 0 25px;
 }
 
+.list-item:nth-child(3) {
+  background: #396792 !important;
+}
+.list-item:nth-child(4) {
+  background: #000 !important;
+}
+.list-item:nth-child(5) {
+  background: #7fa5bc !important;
+}
+.list-item:nth-child(6) {
+  background: #ce6b72 !important;
+}
+.list-item:nth-child(7) {
+  background: #f0d368 !important;
+}
+.list-item:nth-child(8) {
+  background: #82bb6c !important;
+}
+.list-item:nth-child(9) {
+  background: #d79340 !important;
+}
+.list-item:nth-child(10) {
+  background: #232d4d !important;
+}
+.list-item:nth-child(11) {
+  background: #8e96a2 !important;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -183,7 +212,6 @@ body ons-splitter{
 }
 
 .container {
-  margin:0px !important;
   padding-right: 0px !important;
   padding-left: 0px !important;
 }

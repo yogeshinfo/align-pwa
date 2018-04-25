@@ -173,7 +173,7 @@ export default {
     -moz-transform: rotate(-90deg);
     position: absolute;
     top: 119px;
-    left: -21px;
+    left: -10px;
 }
 
 .btns-row{
@@ -193,6 +193,7 @@ export default {
   margin-left:10px;
   float: left;
 }
+
 
 @media screen and (max-width:767px) {
   .navbar-default .navbar-nav>li>a{
