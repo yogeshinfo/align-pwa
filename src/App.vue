@@ -73,7 +73,7 @@ export default {
       window.location.href = '/category/' + cat.id
     },
     goToHome: function () {
-      window.location.href = '/'
+      window.location.href = '/home'
     },
     getPermission: function () {
       var self = this

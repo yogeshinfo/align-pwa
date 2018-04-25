@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <div class="tips-wrap" v-if="tips">
-      <div class="text-left tip-col" v-for="(tip,index) in tips" v-show="current==index">
+      <div class="text-left tip-col" :key="index" v-for="(tip,index) in tips" v-show="current==index">
         <div class="title tips-title"  :style="'background:'+tip.categories.color">
           <span class="tip-count">Tip {{tip.tip_number}} </span>
           <h1>{{tip.title}}</h1>
-          <img class="tip-img" width="100" src="https://upload.wikimedia.org/wikipedia/commons/3/30/Rubik_cube.png">
+          <img class="tip-img" width="100" :src="tip.categories.icon_image">
         </div>
         <div class="row">
           <div class="col-sm-2 col-xs-2 tip-left-col" >
@@ -50,6 +50,7 @@ export default {
   },
   mounted: function () {
     this.tips = this.getTipsByCategory()
+    this.showTip()
   },
   watch: {
     current: function (v) {
@@ -68,6 +69,13 @@ export default {
     }
   },
   methods: {
+    showTip () {
+      if (this.$route.params.tip_id > 0) {
+        this.current = this.$route.params.tip_id
+      } else {
+        this.current = 0
+      }
+    },
     changePage: function (type) {
       if (type === 'n') {
         this.current++

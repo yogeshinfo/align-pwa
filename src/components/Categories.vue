@@ -1,11 +1,11 @@
 <template>
   <div class="container">    
     <div class="tips-wrap">
-      <img class="tip-img" width="100%" src="https://upload.wikimedia.org/wikipedia/commons/3/30/Rubik_cube.png">
+      <img class="tip-img" width="100%" :src="categoryDetails.image">
       <div class="text-left tip-col">
         <div class="title tips-title"  :style="'background:' + categoryDetails.color">          
           <h1>{{categoryDetails.title}}</h1>
-          <img class="tip-img" width="100" src="https://upload.wikimedia.org/wikipedia/commons/3/30/Rubik_cube.png">          
+          <img class="tip-img" width="100" :src="categoryDetails.icon_image">
         </div>
         <div class="row">
           <div class="col-sm-10 col-xs-12" >

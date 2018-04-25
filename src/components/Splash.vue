@@ -1,7 +1,7 @@
 <template>
   <div class="container">    
     <div class="tips-wrap">
-      <img class="tip-img" width="100%" src="https://upload.wikimedia.org/wikipedia/commons/3/30/Rubik_cube.png">      
+      <img class="tip-img" width="100%" src="http://techsysap.com/alignme/public/img/splash-img.png">
     </div>
     <v-ons-bottom-toolbar>
       <div class="btns-row">
